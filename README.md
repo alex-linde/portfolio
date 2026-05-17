@@ -114,11 +114,6 @@ gulp.task('build:jekyll:prod', function(callback) {
 Calling `build:jekyll:dev` will rewrite the `_config.yml` baseurl and keep relative links intact.
 
 
-## Author
-
-Aleksandr Ljamin
-- https://github.com/alexljamin
-
 ## Ownership
 
 Bits and pieces of code are used from the following awesome projects:
