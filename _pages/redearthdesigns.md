@@ -40,7 +40,7 @@ The agency was working with a particular type of content management system (CMS)
 - Made all copy-pasted text into `<cms:editable type='richtext' ... />` to always be plain text - to eliminate text styling issues. Later on, I moved from `type='richtext'` to `type='textarea'` with using `<cms:nl2br></cms:nl2br>` in the front end.
 - Changed file upload and memory limits to be higher in order to support raw footage upload.
 
-Most of my findings are captured in my [GitHub Gists](https://gist.github.com/alljamin).
+Most of my findings are captured in my [GitHub Gists](https://gist.github.com/alex-linde).
 
 ### Project work
 

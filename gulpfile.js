@@ -1,124 +1,83 @@
-"use strict";
+import { execSync } from "child_process";
+import { generate } from "critical";
+import autoprefixer from "gulp-autoprefixer";
+import browserSyncLib from "browser-sync";
+import concat from "gulp-concat";
+import del from "del";
+import gulp from "gulp";
+import imagemin, { gifsicle, svgo } from "gulp-imagemin";
+import jpegtran from "imagemin-jpegtran";
+import pngquant from "imagemin-pngquant";
+import rename from "gulp-rename";
+import run from "gulp-run";
+import gulpSass from "gulp-sass";
+import sass from "sass";
+import uglify from "gulp-uglify";
 
-var critical = require("critical");
-var autoprefixer = require("gulp-autoprefixer");
-var browserSync = require("browser-sync").create();
-var concat = require("gulp-concat");
-var del = require("del");
-var gulp = require("gulp");
-var imagemin = require("gulp-imagemin");
-var rename = require("gulp-rename");
-var run = require("gulp-run");
-var sass = require("gulp-sass")(require('sass'));
-var uglify = require("gulp-uglify");
-var cache = require("gulp-cache");
+// Ensure Homebrew Ruby and its gems are on PATH so `jekyll` can be found
+const rubyBin = execSync("brew --prefix ruby 2>/dev/null || echo ''").toString().trim() + "/bin";
+const gemBin = execSync(`${rubyBin}/gem environment gemdir 2>/dev/null || echo ''`).toString().trim() + "/bin";
+process.env.PATH = `${rubyBin}:${gemBin}:${process.env.PATH}`;
 
-gulp.task("initial:clean", function() {
-  return del(["_site", "assets"]);
-});
+// Point puppeteer (used by critical/penthouse) at the system Chrome instead of
+// its bundled x86_64 Chromium, which can't spawn on arm64 Node.
+process.env.PUPPETEER_EXECUTABLE_PATH = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
-gulp.task("clean:site", function() {
-  return del("_site");
-});
+const browserSync = browserSyncLib.create();
+const sassCompile = gulpSass(sass);
 
-gulp.task("clean:scripts", function() {
-  return del("assets/js");
-});
+// Clean
+gulp.task("initial:clean", () => del(["_site", "assets"]));
+gulp.task("clean:site",    () => del("_site"));
+gulp.task("clean:scripts", () => del("assets/js"));
+gulp.task("clean:styles",  () => del("assets/styles"));
+gulp.task("clean:images",  () => del("assets/img"));
 
-gulp.task("clean:styles", function() {
-  return del("assets/styles");
-});
-
-gulp.task("clean:images", function() {
-  return del("assets/img");
-});
-
-gulp.task("build:scripts", function(done) {
-  return gulp
+// Build
+gulp.task("build:scripts", () =>
+  gulp
     .src("_assets/js/*.js")
     .pipe(concat("main.js"))
     .pipe(uglify())
     .pipe(rename("main.min.js"))
-    .pipe(gulp.dest("assets/js"));
-  done();
-});
+    .pipe(gulp.dest("assets/js"))
+);
 
-gulp.task("build:styles", function(done) {
-  return gulp
+gulp.task("build:styles", () =>
+  gulp
     .src("_assets/styles/main.sass")
-    .pipe(
-      sass({
-        outputStyle: "compressed"
-      })
-    )
+    .pipe(sassCompile({ outputStyle: "compressed" }))
     .pipe(autoprefixer())
     .pipe(rename("main.min.css"))
-    .pipe(gulp.dest("assets/styles"));
-  done();
-});
+    .pipe(gulp.dest("assets/styles"))
+);
 
-gulp.task("build:images", function(done) {
-  return (
-    gulp
-      .src("_assets/img/**/**.*")
-      // cache is not working for some reason
-      .pipe(
-        cache(
-          imagemin(
-            [
-              imagemin.gifsicle({ interlaced: true }),
-              imagemin.mozjpeg({ progressive: true }),
-              imagemin.optipng({ optimizationLevel: 5 }),
-              imagemin.svgo({
-                plugins: [{ removeViewBox: true }, { cleanupIDs: false }]
-              })
-            ],
-            {
-              // show the name of every optimized image
-              verbose: true
-            }
-          )
-        )
-      )
-      .pipe(gulp.dest("assets/img"))
-  );
-  done();
-});
+gulp.task("build:images", () =>
+  gulp
+    .src("_assets/img/**/*", { encoding: false })
+    .pipe(gulp.dest("assets/img"))
+);
 
-gulp.task("build:jekyll", function() {
-  // --incremental regeneration doesn't update front matter
-  // var shellCommand = 'jekyll build';
+gulp.task("build:jekyll", () => run(`${gemBin}/jekyll build`).exec());
 
-  return run("jekyll build").exec();
-});
-
-gulp.task("critical", function(done) {
-  critical.generate({
+gulp.task("critical", async () => {
+  await generate({
     inline: true,
     base: "_site/",
-    css: ["assets/styles/main.min.css"],
+    css: ["_site/assets/styles/main.min.css"],
     src: "index.html",
     dimensions: [
-      {
-        height: 200,
-        width: 500
-      },
-      {
-        height: 900,
-        width: 1200
-      }
+      { height: 200, width: 500 },
+      { height: 900, width: 1200 }
     ],
-    ignore: ["@font-face", /url\(/]
+    ignore: {
+      atrule: ["@font-face"],
+      decl: (node, value) => /url\(/.test(value)
+    }
   });
-  done();
 });
 
-gulp.task("browser-reload", function(done) {
-  browserSync.reload();
-  done();
-});
-
-//initial build
+// Composite
 gulp.task(
   "build",
   gulp.series(
@@ -129,67 +88,58 @@ gulp.task(
   )
 );
 
-//partial build styles
 gulp.task(
   "partial:build:styles",
   gulp.series(
-    ["clean:site", "clean:styles"],
+    "clean:site", "clean:styles",
     "build:styles",
     "build:jekyll",
     "critical",
-    "browser-reload"
+    (done) => { browserSync.reload(); done(); }
   )
 );
 
-//partial build scripts
 gulp.task(
   "partial:build:scripts",
   gulp.series(
-    ["clean:scripts"],
+    "clean:scripts",
     "build:scripts",
     "build:jekyll",
-    "browser-reload"
+    (done) => { browserSync.reload(); done(); }
   )
 );
 
-//partial build images
 gulp.task(
   "partial:build:img",
   gulp.series(
-    ["clean:images"],
+    "clean:images",
     "build:images",
     "build:jekyll",
-    "browser-reload"
+    (done) => { browserSync.reload(); done(); }
   )
 );
 
 gulp.task(
   "default",
-  gulp.series(["build"], function() {
-    // maybe important (injectChanges: true)
+  gulp.series("build", function() {
     browserSync.init({
-      server: {
-        baseDir: "_site"
-      },
+      server: { baseDir: "_site" },
       open: true
     });
 
     gulp.watch(
       [
         "_config.yml",
-        "./index.html",
-        "./404.html",
+        "index.html",
+        "404.html",
         "_layouts/*.html",
         "_includes/*.html",
         "_pages/*.md",
-        "_assets/styles/**/*.*"
+        "_assets/styles/**/*"
       ],
-      gulp.series(["partial:build:styles"])
+      gulp.series("partial:build:styles")
     );
-    gulp.watch(
-      ["_assets/scripts/**/*.*"],
-      gulp.series(["partial:build:scripts"])
-    );
-    gulp.watch(["_assets/img/**/*.*"], gulp.series(["partial:build:img"]));
+    gulp.watch("_assets/js/**/*",  gulp.series("partial:build:scripts"));
+    gulp.watch("_assets/img/**/*", gulp.series("partial:build:img"));
   })
 );

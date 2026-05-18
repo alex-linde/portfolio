@@ -14,7 +14,6 @@ The main aim of this project was to find a best way to capture my work and prese
     - [Gulp.js](#gulp.js)
 - [Workflow](#workflow)
 - [Extra](#extra)
-- [Author](#author)
 - [Ownership](#ownership)
 
 ## Getting started
@@ -24,7 +23,7 @@ The instructions below cover Windows 10 and MacOS 10.15, and later versions.
 ## Windows
 
 1. Install [RubyInstaller](https://rubyinstaller.org/downloads/)
-2. Run `gem jekyll install bundler`
+2. Run `gem install jekyll bundler`
 3. Install [Node.js](https://nodejs.org/en/)
 4. Run `npm i`
 5. Run `npm i -g gulp-cli`
@@ -55,8 +54,8 @@ It is recommended to follow the order of instructions to prevent possible errors
 1. Install rbenv `brew install rbenv`
 2. Make rbenv run everytime terminal is open `echo 'eval "$(rbenv init -)"' >> ~/.zshrc`
 3. Restart terminal for the previous shell command to work.
-3. Install Ruby with rbenv `rbenv install 3.1.2`
-4. Switch from system Ruby to rbenv `rbenv global 3.1.2`
+3. List available Ruby versions `rbenv install -l` and install the latest stable
+4. Switch from system Ruby to rbenv `rbenv global <version>`
 5. Install Jekyll: `gem install jekyll`
 6. Update all system gems: `gem update --system`
 
@@ -65,21 +64,26 @@ It is recommended to follow the order of instructions to prevent possible errors
 1. Install [Node Version Manager](https://github.com/nvm-sh/nvm).
 2. Install Node: `nvm install node`
 3. Install all dependencies `npm i`
-4. Link Gulp `npm link gulp`
+4. Install gulp-cli globally: `npm i -g gulp-cli`
 
 ## Workflow
 
-Here is what happens when you type `gulp` in terminal:
+| Command | Description |
+|---|---|
+| `npm start` | Build assets, run Jekyll, and start the browser-sync dev server with watch |
+| `npm stop` | Kill the dev server (macOS/Linux — kills whatever is on port 3000) |
+| `npm run build` | One-off asset + Jekyll build (no server) |
+| `npm run build:dev` | Build with `baseurl ""` — use when hosting locally or on a custom domain |
+| `npm run build:prod` | Build with the `baseurl` set in `_config.yml` — use for GitHub Pages |
+| `npm run deploy` | Push `master` and `_site` to the `gh-pages` branch |
+
+Here is what happens during a build:
 
 1. Gulp takes files from `_assets` directory (don't rename this directory) applies all the specified Gulp tasks, creates `assets` directory and copies optimized assets into this directory. 
 
 2. When all assets are built Gulp triggers `jekyll build` and Jekyll grabs everything from `assets` directory and copies to `_site/assets` directory. 
 
-3. When Jekyll is built, Gulp executes a watch task and tracks changes (yes, even `_config.yml`) and applies them straight away with live browser reloading.
-
-To push all changes to `master` and `_site` contents to `gh-pages` branches, `package.json` has a handy script called `deploy`. You can call it by `npm run deploy`. 
-
-For more information look into the contents of `gulpfile.js` and `package.json`.
+3. `npm start` also executes a watch task that tracks changes (yes, even `_config.yml`) and applies them straight away with live browser reloading.
 
 ## Extra
 
@@ -89,35 +93,7 @@ For more information look into the contents of `gulpfile.js` and `package.json`.
 baseurl: /YOUR_GITHUB_REPOSITORY_NAME
 url: YOUR_GITHUB_USERNAME.github.io
 ```
-  In `gulpfile.js` you'll need to create tasks Jekyll separate for local development and Github Pages like so:
-```
-gulp.task('build:jekyll:dev', function(callback) {
-     var shellCommand = 'jekyll build --incremental --baseurl "" ';
-    
-     return gulp.src('')
-         .pipe(run(shellCommand))
-         .on('error', gutil.log);
-
-     callback();
- });
-
-gulp.task('build:jekyll:prod', function(callback) {
-    var shellCommand = 'jekyll build --incremental';
-    
-    return gulp.src('')
-        .pipe(run(shellCommand))
-        .on('error', gutil.log);
-
-    callback();
-});
-```
-Calling `build:jekyll:dev` will rewrite the `_config.yml` baseurl and keep relative links intact.
-
-
-## Author
-
-Aleksandr Ljamin
-- https://github.com/alexljamin
+  Then use `npm run build:dev` for local development (overrides `baseurl` to `""`) and `npm run build:prod` for GitHub Pages (uses the `baseurl` from `_config.yml`).
 
 ## Ownership
 

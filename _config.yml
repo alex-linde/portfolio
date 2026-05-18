@@ -8,10 +8,10 @@ collections:
 
 exclude: ["_assets", "gulpfile.js", "node_modules", "package.json", "package-lock.json", ".jekyll-metadata"]
 
-title: Alex Ljamin
+title: Alex Linde
 tagline: 'Personal portfolio'
 description: 'Front-end web developer'
 
-github: https://github.com/alljamin
-linkedin: https://linkedin.com/in/alljamin
+github: https://github.com/alex-linde
+linkedin: https://linkedin.com/in/iamalexlinde
 stackexchange: https://stackexchange.com/users/6679321/alljamin
