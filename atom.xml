@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>Alex Ljamin</title>
+ <title>Alex Linde</title>
  <link href="alljamin.com/atom.xml" rel="self"/>
  <link href="alljamin.com/"/>
- <updated>2023-03-03T15:47:11+10:30</updated>
+ <updated>2026-05-18T23:28:22+09:30</updated>
  <id>alljamin.com</id>
  <author>
    <name></name>
@@ -388,7 +388,7 @@
   &lt;li&gt;Changed file upload and memory limits to be higher in order to support raw footage upload.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Most of my findings are captured in my &lt;a href=&quot;https://gist.github.com/alljamin&quot;&gt;GitHub Gists&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Most of my findings are captured in my &lt;a href=&quot;https://gist.github.com/alex-linde&quot;&gt;GitHub Gists&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;project-work&quot;&gt;Project work&lt;/h3&gt;
 
