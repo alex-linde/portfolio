@@ -4,7 +4,7 @@
  <title>Alex Linde</title>
  <link href="alljamin.com/atom.xml" rel="self"/>
  <link href="alljamin.com/"/>
- <updated>2026-05-18T23:28:22+09:30</updated>
+ <updated>2026-05-19T07:36:03+00:00</updated>
  <id>alljamin.com</id>
  <author>
    <name></name>
@@ -15,7 +15,7 @@
  <entry>
   <title>PAUSE magazine</title>
     <link href="alljamin.com/PAUSE/"/>
-    <updated>2014-12-30T00:00:00+10:30</updated>
+    <updated>2014-12-30T00:00:00+00:00</updated>
     <id>alljamin.com/PAUSE</id>
     <content type="html">&lt;p&gt;PAUSE magazine was founded in 2009 by students to shed some light on university life. Every year a new editor-in-chief would be chosen to lead the development and production of 2 issues. I was lucky enough to start contributing to the magazine as a volunteer for 4 months, until I was offered a position of an editor-in-chief.&lt;/p&gt;
 
@@ -43,7 +43,7 @@
  <entry>
   <title>Warehouse.space</title>
     <link href="alljamin.com/warehouse.space/"/>
-    <updated>2016-02-17T00:00:00+10:30</updated>
+    <updated>2016-02-17T00:00:00+00:00</updated>
     <id>alljamin.com/warehouse.space</id>
     <content type="html">&lt;p&gt;Warehouse.space is an innovative warehousing company, what provides self-storage and vertical storage solutions all around the world.&lt;/p&gt;
 
@@ -62,7 +62,7 @@
  <entry>
   <title>The Distillery Co</title>
     <link href="alljamin.com/the-distillery-co/"/>
-    <updated>2016-05-17T00:00:00+09:30</updated>
+    <updated>2016-05-17T00:00:00+00:00</updated>
     <id>alljamin.com/the distillery co</id>
     <content type="html">&lt;p&gt;I have contracted for Adelaide based digital agency - &lt;a href=&quot;https://thedistillery.co/&quot;&gt;The Distillery Co&lt;/a&gt; - during the May of 2017 as a front-end web developer.&lt;/p&gt;
 
@@ -87,7 +87,7 @@
  <entry>
   <title>Adelaide Startup Weekend 2017</title>
     <link href="alljamin.com/adelaide-startup-weekend/"/>
-    <updated>2017-02-25T00:00:00+10:30</updated>
+    <updated>2017-02-25T00:00:00+00:00</updated>
     <id>alljamin.com/adelaide startup weekend</id>
     <content type="html">&lt;p&gt;Startup Weekend is a 54 hours hackathon held all over the world and bound to the particular theme. Such a short period of time allows participants to quickly test an idea and build an MVP.&lt;/p&gt;
 
@@ -106,7 +106,7 @@
  <entry>
   <title>Adelaide law firm</title>
     <link href="alljamin.com/adelaide-law-firm/"/>
-    <updated>2017-03-17T00:00:00+10:30</updated>
+    <updated>2017-03-17T00:00:00+00:00</updated>
     <id>alljamin.com/adelaide law firm</id>
     <content type="html">&lt;p&gt;I was approached by a small law firm to help the company to overcome current technical challenges. The company never had an active system administrator and unfortunately does not have a budget to keep one full-time, that means that my proposed solution should:&lt;/p&gt;
 &lt;ul&gt;
@@ -152,7 +152,7 @@
  <entry>
   <title>Techstars Adelaide Accelerator</title>
     <link href="alljamin.com/techstars/"/>
-    <updated>2017-10-12T00:00:00+10:30</updated>
+    <updated>2017-10-12T00:00:00+00:00</updated>
     <id>alljamin.com/techstars</id>
     <content type="html">&lt;p&gt;Techstars Adelaide Accelerator 2017 is the first APAC Techstars program. The main theme of this program is defence and security. This program is supported by such corporate partners as Boeing, Thales, Codan and SAAB. 10 startup companies were chosen to participate in the accelerator.&lt;/p&gt;
 
@@ -175,7 +175,7 @@
  <entry>
   <title>Personal website revamp</title>
     <link href="alljamin.com/personal-website-revamp/"/>
-    <updated>2017-11-17T00:00:00+10:30</updated>
+    <updated>2017-11-17T00:00:00+00:00</updated>
     <id>alljamin.com/personal website revamp</id>
     <content type="html">&lt;p&gt;So, the day finally came and the new version of my portfolio is up and running! Yay!&lt;/p&gt;
 
@@ -202,7 +202,7 @@
  <entry>
   <title>Pack and Dispatch</title>
     <link href="alljamin.com/pack-and-dispatch/"/>
-    <updated>2018-03-17T00:00:00+10:30</updated>
+    <updated>2018-03-17T00:00:00+00:00</updated>
     <id>alljamin.com/pack and dispatch</id>
     <content type="html">&lt;p&gt;From the previous positive working experience with the founder of &lt;a href=&quot;% post_url warehouse.space %&quot;&gt;warehouse.space&lt;/a&gt; I accepted the offer to create another website - &lt;a href=&quot;https://packdispatch.com&quot;&gt;packdispatch.com&lt;/a&gt;.&lt;/p&gt;
 
@@ -223,7 +223,7 @@
  <entry>
   <title>Peregrine Corporation</title>
     <link href="alljamin.com/peregrine-corporation/"/>
-    <updated>2018-08-26T00:00:00+09:30</updated>
+    <updated>2018-08-26T00:00:00+00:00</updated>
     <id>alljamin.com/peregrine corporation</id>
     <content type="html">&lt;p&gt;&lt;a href=&quot;https://www.peregrine.com.au/&quot;&gt;Peregrine Corporation&lt;/a&gt; is South Australia (SA) largest privately-owned retail company. The company holds various major brands under its umbrella. One of the South Australia most recognised brands is &lt;a href=&quot;https://ontherun.com.au&quot;&gt;OTR&lt;/a&gt; - the concept of a convenience store combined with the fuel station.&lt;/p&gt;
 
@@ -281,7 +281,7 @@
  <entry>
   <title>Dynastea</title>
     <link href="alljamin.com/dynastea/"/>
-    <updated>2019-03-20T00:00:00+10:30</updated>
+    <updated>2019-03-20T00:00:00+00:00</updated>
     <id>alljamin.com/dynastea</id>
     <content type="html">&lt;h3 id=&quot;company&quot;&gt;Company&lt;/h3&gt;
 
@@ -347,7 +347,7 @@
  <entry>
   <title>Red Earth Designs</title>
     <link href="alljamin.com/redearthdesigns/"/>
-    <updated>2019-03-24T00:00:00+10:30</updated>
+    <updated>2019-03-24T00:00:00+00:00</updated>
     <id>alljamin.com/redearthdesigns</id>
     <content type="html">&lt;h3 id=&quot;company&quot;&gt;Company&lt;/h3&gt;
 
@@ -448,7 +448,7 @@
  <entry>
   <title>NextFaze</title>
     <link href="alljamin.com/nextfaze/"/>
-    <updated>2019-09-30T00:00:00+09:30</updated>
+    <updated>2019-09-30T00:00:00+00:00</updated>
     <id>alljamin.com/nextfaze</id>
     <content type="html">&lt;p&gt;&lt;a href=&quot;https://nextfaze.com&quot;&gt;NextFaze&lt;/a&gt; is an Adelaide-based agile software engineering agency which specialises in developing both native applications and cross-platform web applications.
 ​&lt;/p&gt;
