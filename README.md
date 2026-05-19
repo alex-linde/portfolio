@@ -33,14 +33,14 @@ npm run build
 ### Prerequisites
 
 - **Node.js** 22+ ([download](https://nodejs.org/))
-- **Ruby** 3.3+ ([install via Homebrew](https://brew.sh/): `brew install ruby`)
+- **Ruby** 3.3+ (comes with macOS, or install via [Homebrew](https://brew.sh/): `brew install ruby`)
 - **Git** ([download](https://git-scm.com/))
 
 ### Installation
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. For local development, install Jekyll: `gem install jekyll`
+1. Clone the repository: `git clone https://github.com/alex-linde/portfolio.git && cd portfolio`
+2. Install Node dependencies: `npm install`
+3. For local development, install Jekyll gem: `gem install jekyll`
 
 **That's it!** The site is ready to build and deploy.
 
