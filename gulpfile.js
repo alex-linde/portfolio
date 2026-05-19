@@ -14,10 +14,14 @@ import gulpSass from "gulp-sass";
 import sass from "sass";
 import uglify from "gulp-uglify";
 
-// Ensure Homebrew Ruby and its gems are on PATH so `jekyll` can be found
-const rubyBin = execSync("brew --prefix ruby 2>/dev/null || echo ''").toString().trim() + "/bin";
-const gemBin = execSync(`${rubyBin}/gem environment gemdir 2>/dev/null || echo ''`).toString().trim() + "/bin";
-process.env.PATH = `${rubyBin}:${gemBin}:${process.env.PATH}`;
+// Ensure Ruby gems are on PATH so `jekyll` can be found
+try {
+  const rubyBin = execSync("brew --prefix ruby 2>/dev/null").toString().trim() + "/bin";
+  const gemBin = execSync(`${rubyBin}/gem environment gemdir 2>/dev/null`).toString().trim() + "/bin";
+  process.env.PATH = `${rubyBin}:${gemBin}:${process.env.PATH}`;
+} catch (e) {
+  // On CI, jekyll should be in PATH already
+}
 
 // Point puppeteer (used by critical/penthouse) at the system Chrome instead of
 // its bundled x86_64 Chromium, which can't spawn on arm64 Node.
@@ -58,7 +62,7 @@ gulp.task("build:images", () =>
     .pipe(gulp.dest("assets/img"))
 );
 
-gulp.task("build:jekyll", () => run(`${gemBin}/jekyll build`).exec());
+gulp.task("build:jekyll", () => run(`jekyll build`).exec());
 
 gulp.task("critical", async () => {
   await generate({
