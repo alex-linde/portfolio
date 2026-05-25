@@ -1,8 +1,19 @@
 # Portfolio (Archived)
 
-> **This is an archived version of my personal website.** For the current version, visit [alekslinde.com](https://alekslinde.com)
+> ⚠️ **This project is archived and no longer maintained.** Dependencies are outdated and not actively updated. For the current version of my website, visit [alekslinde.com](https://alekslinde.com)
 
 A custom [Jekyll](https://jekyllrb.com/) portfolio site with a modern build pipeline.
+
+## ⚠️ Archive Notice
+
+**This repository is archived and unmaintained.** 
+
+- Dependencies are no longer updated and may contain security vulnerabilities
+- The build pipeline and tooling are outdated
+- This code is preserved for reference only and should not be used as a template for new projects
+- Use the [current portfolio](https://alekslinde.com) as the canonical version
+
+For a working example with modern tooling, see the current website repository.
 
 **Key features:**
 - Fast, lightweight build using esbuild + SASS
