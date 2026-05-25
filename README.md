@@ -1,9 +1,10 @@
-# Portfolio
+# Portfolio (Archived)
 
-A custom [Jekyll](https://jekyllrb.com/) portfolio site with a modern build pipeline. The site automatically builds and deploys to GitHub Pages on every push via GitHub Actions.
+> **This is an archived version of my personal website.** For the current version, visit [alekslinde.com](https://alekslinde.com)
+
+A custom [Jekyll](https://jekyllrb.com/) portfolio site with a modern build pipeline.
 
 **Key features:**
-- Automated deployment via GitHub Actions (no manual deploy step needed)
 - Fast, lightweight build using esbuild + SASS
 - Zero npm vulnerabilities
 - Live browser reload during development
@@ -15,7 +16,6 @@ A custom [Jekyll](https://jekyllrb.com/) portfolio site with a modern build pipe
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Development](#development)
-- [Deployment](#deployment)
 - [Build pipeline](#build-pipeline)
 - [Credits](#credits)
 
@@ -68,12 +68,6 @@ This will:
 
 Open http://localhost:4000 in your browser.
 
-## Deployment
-
-**Automatic:** Push to `master` branch and GitHub Actions automatically builds and deploys to GitHub Pages.
-
-**Manual rebuild:** Run `npm run build` to test the full build locally.
-
 ## Build pipeline
 
 The build process uses:
@@ -98,4 +92,3 @@ Theme and design inspiration:
   - Simplified setup (no global Gulp installation needed)
   - Faster builds with parallel compilation
   - Removed image optimization and critical CSS (no longer needed for small CSS)
-  - GitHub Actions automatically deploys on push to master
